@@ -1,0 +1,219 @@
+# ==============================================================================
+# INSTITUTO PROFESIONAL SAN SEBASTIÁN - CARRERA DE INFORMÁTICA
+# ASIGNATURA: TESTING APLICADO AL DESARROLLO DE SISTEMAS
+# EXAMEN FINAL - CASOS DE PRUEBA EN FORMATO GHERKIN (BDD)
+# SITIO WEB 2: ENERGY AND WATER ECOPARCELAS (https://clinicatecnologica.cl/energyandwater/)
+# ==============================================================================
+
+# ------------------------------------------------------------------------------
+# HISTORIA DE USUARIO 1: NAVEGACIÓN INTUITIVA
+# Como usuario, quiero un menú de navegación claro y accesible desde cualquier página,
+# para encontrar rápidamente la información que necesito sobre las parcelas.
+# ------------------------------------------------------------------------------
+
+Característica: HU01 - Navegación Intuitiva en Energy & Water EcoParcelas
+  Como usuario interesado en soluciones de parcelas sustentables
+  Quiero disponer de una barra de navegación funcional con enlaces ancla correctos
+  Para desplazarme rápidamente a las secciones de mi interés
+
+  Criterio de Aceptación 1.1:
+  Los enlaces del menú superior deben provocar el desplazamiento suave hacia la sección ancla correspondiente.
+
+  Escenario: CP-EW-01 - Desplazamiento exitoso a la sección de parcelas desde la barra de navegación
+    Dado que el usuario se encuentra en la página de inicio "https://clinicatecnologica.cl/energyandwater/"
+    Cuando hace clic en el enlace "Parcelas" del menú superior
+    Entonces la vista debe desplazarse automáticamente hasta el contenedor con ID "#parcelas"
+    Y debe mostrar el catálogo con las tres opciones de lotes demostrativos
+
+  Criterio de Aceptación 1.2:
+  Los hipervínculos del menú hacia secciones internas deben coincidir de forma idéntica con los identificadores (ID) del DOM.
+
+  Escenario: CP-EW-02 - Navegación hacia la sección FAQ desde el menú de navegación
+    Dado que el usuario se encuentra en cualquier sección de la página principal
+    Cuando hace clic en el enlace "FAQ" del menú de navegación superior
+    Entonces el navegador debe desplazarse directamente hacia la sección de preguntas frecuentes con ID "#faq"
+    Y el enlace del menú no debe apuntar a un identificador inexistente como "#preguntas"
+
+# ------------------------------------------------------------------------------
+# HISTORIA DE USUARIO 2: COMPATIBILIDAD MÓVIL
+# Como usuario que navega desde mi smartphone o tablet, quiero que la web sea
+# completamente funcional y adaptable a dispositivos móviles, para poder buscar y
+# revisar parcelas en cualquier momento y lugar.
+# ------------------------------------------------------------------------------
+
+Característica: HU02 - Compatibilidad Móvil y Diseño Responsivo en Energy & Water
+  Como usuario que utiliza dispositivos móviles
+  Quiero que los bloques de contenido y formularios se reorganicen fluidamente
+  Para interactuar con la plataforma sin zoom manual ni distorsión de elementos
+
+  Criterio de Aceptación 2.1:
+  La cuadrícula de proyectos debe acomodarse a una columna legible en anchos de pantalla reducidos.
+
+  Escenario: CP-EW-03 - Reorganización responsiva de la grilla de lotes en smartphone
+    Dado que el usuario navega en un viewport móvil de 375x667 píxeles
+    Cuando se posiciona en la sección "#parcelas"
+    Entonces los elementos con clase ".project" deben mostrarse ordenados verticalmente (1 columna)
+    Y el ancho de las tarjetas no debe desbordar los límites laterales de la pantalla
+
+  Criterio de Aceptación 2.2:
+  Los campos combinados del formulario de contacto deben apilarse y ser fácilmente clicables en pantallas móviles.
+
+  Escenario: CP-EW-04 - Adaptabilidad y usabilidad de los campos del formulario en pantalla móvil
+    Dado que el usuario visualiza el formulario de visita en un dispositivo móvil
+    Cuando enfoca los campos agrupados bajo la clase ".two" (Nombre y Teléfono)
+    Entonces cada campo de entrada debe ocupar el ancho completo disponible para facilitar la digitación
+    Y ningún input debe solaparse ni quedar fuera del área visible
+
+# ------------------------------------------------------------------------------
+# HISTORIA DE USUARIO 3: GALERÍA DE IMÁGENES Y VIDEOS
+# Como comprador potencial, quiero ver imágenes de alta calidad y videos de las parcelas,
+# para evaluar mejor el entorno y las características del terreno antes de visitarlo.
+# ------------------------------------------------------------------------------
+
+Característica: HU03 - Galería Multimedia e Inspección Remota en Energy & Water
+  Como comprador potencial de un lote sustentable
+  Quiero revisar contenido gráfico y audiovisual fidedigno
+  Para evaluar la infraestructura energética e hídrica antes de agendar una visita presencial
+
+  Criterio de Aceptación 3.1:
+  Las imágenes de inspección deben ser descriptivas y contar con atributos de accesibilidad completos (alt text).
+
+  Escenario: CP-EW-05 - Inspección de imágenes y cumplimiento de accesibilidad en la galería
+    Dado que el usuario accede a la sección "Imágenes y video" (#galeria)
+    Cuando visualiza las imágenes correspondientes a los lotes demostrativos
+    Entonces cada elemento <img> debe poseer un atributo "alt" no vacío que describa el contenido de la imagen
+    Y ninguna imagen debe presentar el atributo alt="" vacío o carecer de descripción
+
+  Criterio de Aceptación 3.2:
+  El módulo de video de recorrido técnico debe abrir y reproducir el contenido audiovisual correspondiente.
+
+  Escenario: CP-EW-06 - Reproducción interactiva del video de recorrido técnico
+    Dado que el usuario se ubica en el recuadro "Video: recorrido técnico" de la galería
+    Cuando hace clic en el enlace "▶ Reproducir"
+    Entonces el sistema debe abrir un reproductor de video o ventana modal para reproducir el clip de 01:20 min
+    Y el enlace no debe tener un href="#" genérico que recargue la página o desplace la vista al inicio
+
+# ------------------------------------------------------------------------------
+# HISTORIA DE USUARIO 4: INFORMACIÓN DE CONTACTO
+# Como usuario interesado en una parcela, quiero encontrar fácilmente la información
+# de contacto de la empresa, para poder comunicarme rápidamente y agendar una visita o pedir más detalles.
+# ------------------------------------------------------------------------------
+
+Característica: HU04 - Disponibilidad y Consistencia de Contacto en Energy & Water
+  Como usuario interesado en agendar una visita técnica
+  Quiero acceder a los datos institucionales de contacto y enlaces de navegación consistentes
+  Para comunicarme directamente por teléfono, correo o presencialmente
+
+  Criterio de Aceptación 4.1:
+  La tarjeta de contacto en la página principal debe desplegar dirección, teléfono, correo y horarios de atención.
+
+  Escenario: CP-EW-07 - Consulta de información de contacto en la sección principal
+    Dado que el usuario se ubica en la sección de contacto (#contacto)
+    Cuando consulta la tarjeta "Energy + Water Demo"
+    Entonces debe visualizar la dirección "Av. Tecnología 520, Las Condes, Santiago"
+    Y debe disponer de un enlace telefónico operativo a "+56 2 2555 0180" y correo "contacto@ew-demo.cl"
+
+  Criterio de Aceptación 4.2:
+  Los botones de contacto en las páginas de detalle deben dirigir de manera exacta a la sección de contacto en la página de inicio.
+
+  Escenario: CP-EW-08 - Navegación a contacto desde la página de detalle del lote
+    Dado que el usuario se encuentra revisando la ficha técnica en "detalle.html?lote=EW-01"
+    Cuando hace clic en el botón "Solicitar visita"
+    Entonces el sistema debe redirigir a "index.html#contacto" posicionando la pantalla sobre el formulario
+    Y el menú de la página de detalle no debe apuntar a rutas inválidas como "index.html#contact"
+
+# ------------------------------------------------------------------------------
+# HISTORIA DE USUARIO 5: FORMULARIO DE SOLICITUD
+# Como usuario interesado en una parcela, quiero formularios de solicitud en la web,
+# para agendar visitas o solicitar más información fácilmente.
+# ------------------------------------------------------------------------------
+
+Característica: HU05 - Formulario de Solicitud de Visita Técnica en Energy & Water
+  Como potencial cliente
+  Quiero enviar un formulario con mis datos y selección de lote
+  Para agendar una visita técnica a la parcela demostrativa
+
+  Criterio de Aceptación 5.1:
+  El formulario debe registrar la solicitud al suministrar datos válidos y mostrar mensaje de estado exitoso.
+
+  Escenario: CP-EW-09 - Envío de solicitud de visita técnica con datos válidos
+    Dado que el usuario se ubica en el formulario "visit-form" en la sección "#contacto"
+    Cuando ingresa el nombre "Gina Norambuena"
+    Y el teléfono "+56 2 2345 6789"
+    Y el correo "gina.norambuena@example.com"
+    Y selecciona el lote "EW-02 Agua Clara"
+    Y redacta el mensaje "Solicitud para coordinar visita este fin de semana"
+    Y mantiene marcada la casilla de tratamiento de datos
+    Y presiona el botón "Enviar solicitud"
+    Entonces el elemento "#form-result" debe desplegar el mensaje "Solicitud registrada correctamente."
+    Y los campos del formulario deben restablecerse
+
+  Criterio de Aceptación 5.2:
+  El sistema debe validar los campos obligatorios e impedir el envío si se envían datos vacíos o con formato inválido.
+
+  Escenario: CP-EW-10 - Validación de campos obligatorios en el formulario de solicitud
+    Dado que el usuario se ubica frente al formulario "#visit-form"
+    Cuando deja todos los campos de texto en blanco (nombre, teléfono, correo)
+    Y presiona el botón "Enviar solicitud"
+    Entonces el formulario debe ser bloqueado por validación de campos obligatorios
+    Y el sistema no debe mostrar "Solicitud registrada correctamente." ni procesar registros vacíos
+
+# ------------------------------------------------------------------------------
+# HISTORIA DE USUARIO 6: NAVEGACIÓN SEGURA
+# Como usuario que proporciona información personal, quiero asegurarme de que la web tenga
+# medidas de seguridad robustas, para proteger mis datos sensibles durante la transacción.
+# ------------------------------------------------------------------------------
+
+Característica: HU06 - Navegación Segura y Protección de Datos en Energy & Water
+  Como usuario que suministra información personal
+  Quiero garantías de seguridad en la navegación y almacenamiento de datos
+  Para prevenir el acceso no autorizado o la exposición indebida de mi privacidad
+
+  Criterio de Aceptación 6.1:
+  Todos los enlaces externos presentes en el sitio deben dirigir a destinos seguros bajo protocolo HTTPS.
+
+  Escenario: CP-EW-11 - Verificación de protocolos seguros en enlaces externos del footer
+    Dado que el usuario se desplaza al pie de página (footer) de Energy & Water
+    Cuando inspecciona los enlaces en la columna "Enlaces"
+    Entonces el enlace hacia el portal proveedor debe utilizar el protocolo seguro "https://"
+    Y no debe contener hipervínculos inseguros hacia "http://example.com"
+
+  Criterio de Aceptación 6.2:
+  Los datos personales de contacto no deben guardarse en texto plano sin cifrar en el almacenamiento local del cliente.
+
+  Escenario: CP-EW-12 - Protección de datos personales contra fuga en LocalStorage (CWE-312)
+    Dado que el usuario ingresa su nombre, correo y teléfono en el formulario de contacto
+    Cuando presiona el botón "Enviar solicitud"
+    Entonces la aplicación no debe almacenar información de identificación personal (PII) en texto claro dentro de localStorage
+    Y los datos deben enviarse a un servicio backend seguro mediante un canal cifrado y autenticado
+
+# ------------------------------------------------------------------------------
+# HISTORIA DE USUARIO 7: PREGUNTAS FRECUENTES (FAQ)
+# Como usuario nuevo en el sitio, quiero acceder a una sección de preguntas frecuentes (FAQ),
+# para encontrar rápidamente respuestas a las preguntas más comunes y entender mejor los servicios ofrecidos sin necesidad de contactar al soporte.
+# ------------------------------------------------------------------------------
+
+Característica: HU07 - Centro de Ayuda y Preguntas Frecuentes en Energy & Water
+  Como usuario nuevo en la plataforma
+  Quiero disponer de un buscador ágil y preguntas frecuentes interactivas
+  Para resolver mis inquietudes sobre los lotes de forma autónoma
+
+  Criterio de Aceptación 7.1:
+  El buscador de preguntas frecuentes debe filtrar el contenido dinámicamente y el botón "Limpiar" debe restaurar todas las preguntas.
+
+  Escenario: CP-EW-13 - Filtrado de preguntas y restauración de contenido mediante botón Limpiar
+    Dado que el usuario se ubica en la sección "#faq" con las 4 preguntas visibles
+    Cuando escribe una palabra clave en el campo de búsqueda "#faq-search"
+    Y posteriormente presiona el botón "Limpiar"
+    Entonces el campo de búsqueda debe quedar vacío
+    Y las 4 preguntas frecuentes deben volver a desplegarse en pantalla sin permanecer ocultas
+
+  Criterio de Aceptación 7.2:
+  Cada botón de pregunta frecuente debe abrir el panel que contiene la respuesta asociada a dicha consulta.
+
+  Escenario: CP-EW-14 - Despliegue interactivo de la respuesta sobre cómo agendar una visita
+    Dado que el usuario se encuentra en la sección de preguntas frecuentes
+    Cuando hace clic en el botón "¿Cómo agendo una visita?"
+    Entonces el panel que contiene la respuesta correspondiente debe expandirse con la clase "show"
+    Y el atributo "data-target" del botón debe coincidir exactamente con el ID del contenedor de la respuesta
+

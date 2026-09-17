@@ -1,0 +1,398 @@
+# ==============================================================================
+# INSTITUTO PROFESIONAL SAN SEBASTIÁN - CARRERA DE INFORMÁTICA
+# ASIGNATURA: TESTING APLICADO AL DESARROLLO DE SISTEMAS
+# EXAMEN FINAL - SUITE COMPLETA DE 28 CASOS DE PRUEBA EN FORMATO GHERKIN (BDD)
+# SITIOS:
+#   1. TERRASOL PARCELAS (https://clinicatecnologica.cl/terrasol/)
+#   2. ENERGY AND WATER ECOPARCELAS (https://clinicatecnologica.cl/energyandwater/)
+# ==============================================================================
+
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+# PARTE 1: SITIO WEB TERRASOL PARCELAS (14 CASOS DE PRUEBA)
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+# ------------------------------------------------------------------------------
+# HU01: NAVEGACIÓN INTUITIVA
+# ------------------------------------------------------------------------------
+Característica: HU01 - Navegación Intuitiva en TerraSol Parcelas
+  Como usuario potencial de parcelas
+  Quiero disponer de un menú de navegación funcional y accesible en todas las páginas
+  Para explorar los detalles y disponibilidad de los terrenos sin obstáculos
+
+  Criterio de Aceptación 1.1:
+  El menú de navegación debe permitir el acceso directo a la sección de parcelas desde la página de inicio.
+
+  Escenario: CP-TS-01 - Navegación exitosa a la sección de parcelas desde el menú principal
+    Dado que el usuario se encuentra en la página de inicio "https://clinicatecnologica.cl/terrasol/index.html"
+    Cuando hace clic en el enlace "Parcelas" del menú de navegación superior
+    Entonces el navegador debe redirigir a la URL "https://clinicatecnologica.cl/terrasol/parcelas.html"
+    Y la página debe mostrar el título "Parcelas" y el catálogo de lotes disponibles
+
+  Criterio de Aceptación 1.2:
+  Todos los enlaces del menú de navegación en páginas secundarias deben apuntar a rutas válidas y existentes.
+
+  Escenario: CP-TS-02 - Verificación de enlace de navegación a parcelas desde la página FAQ
+    Dado que el usuario se encuentra en la página de preguntas frecuentes "https://clinicatecnologica.cl/terrasol/faq.html"
+    Cuando hace clic en el enlace "Parcelas" situado en la barra de navegación superior
+    Entonces el sistema debe dirigir al usuario a la página existente "parcelas.html" con código HTTP 200
+    Y no debe mostrar un mensaje de error HTTP 404 "Not Found"
+
+# ------------------------------------------------------------------------------
+# HU02: COMPATIBILIDAD MÓVIL
+# ------------------------------------------------------------------------------
+Característica: HU02 - Compatibilidad Móvil y Diseño Responsivo en TerraSol
+  Como usuario que navega desde dispositivos móviles
+  Quiero que la interfaz se adapte correctamente al ancho de pantalla del dispositivo
+  Para interactuar con la información sin pérdida de contenido ni desbordamientos horizontales
+
+  Criterio de Aceptación 2.1:
+  La vista en smartphones debe reorganizar los elementos verticalmente sin generar scroll horizontal indeseado.
+
+  Escenario: CP-TS-03 - Visualización responsiva de la página de inicio en resolución móvil
+    Dado que el usuario accede al sitio desde un dispositivo móvil con viewport de 375x667 píxeles
+    Cuando carga la página de inicio "https://clinicatecnologica.cl/terrasol/"
+    Entonces el contenedor principal no debe superar el 100% del ancho del viewport
+    Y la tipografía, botones y tarjetas de parcelas deben visualizarse apiladas y legibles sin scroll horizontal
+
+  Criterio de Aceptación 2.2:
+  Los botones de llamada a la acción deben tener un área táctil accesible y responder adecuadamente en pantallas táctiles.
+
+  Escenario: CP-TS-04 - Usabilidad y respuesta táctil de botones de acción en entorno móvil
+    Dado que el usuario visualiza la sección principal (hero) en un viewport móvil de 375x667
+    Cuando presiona el botón táctil "Ver parcelas"
+    Entonces el sistema debe registrar la pulsación sin solapamientos con otros elementos
+    Y debe desplazarse o cargar la vista de parcelas de forma fluida
+
+# ------------------------------------------------------------------------------
+# HU03: GALERÍA DE IMÁGENES Y VIDEOS
+# ------------------------------------------------------------------------------
+Característica: HU03 - Galería Multimedia de Parcelas en TerraSol
+  Como comprador potencial
+  Quiero visualizar recursos multimedia de alta calidad (fotografías y video)
+  Para inspeccionar las condiciones del terreno antes de coordinar una visita en terreno
+
+  Criterio de Aceptación 3.1:
+  Todas las imágenes publicadas en la galería deben cargarse correctamente desde el servidor.
+
+  Escenario: CP-TS-05 - Carga e integridad de las imágenes de la galería del entorno
+    Dado que el usuario navega hasta la sección "Galería del entorno" en la página principal
+    Cuando se renderiza la grilla de imágenes con clase "gallery-grid"
+    Entonces cada una de las 4 imágenes debe devolver un estado HTTP 200 OK
+    Y ninguna imagen debe presentar iconos de recurso roto o error HTTP 404
+
+  Criterio de Aceptación 3.2:
+  El componente de video debe permitir la reproducción interactiva del recorrido demostrativo.
+
+  Escenario: CP-TS-06 - Reproducción interactiva del video demostrativo de 60 segundos
+    Dado que el usuario se ubica en la sección de video "Recorrido de 60 segundos"
+    Cuando hace clic sobre el botón "▶ Reproducir video"
+    Entonces el sistema debe iniciar la reproducción de un reproductor de video modal o embebido
+    Y no debe permanecer en estado inactivo con eventos vacíos
+
+# ------------------------------------------------------------------------------
+# HU04: INFORMACIÓN DE CONTACTO
+# ------------------------------------------------------------------------------
+Característica: HU04 - Información y Canales de Contacto en TerraSol
+  Como usuario interesado en un lote
+  Quiero consultar canales de contacto directos, fidedignos y operativos
+  Para comunicarme inmediatamente con el equipo de ventas
+
+  Criterio de Aceptación 4.1:
+  La información de contacto en la página de inicio y footer debe presentar dirección, teléfono y correo electrónico.
+
+  Escenario: CP-TS-07 - Disponibilidad y consistencia visual de los datos de contacto
+    Dado que el usuario se desplaza a la tarjeta "Equipo TerraSol Demo" o al pie de página
+    Cuando revisa los datos de contacto desplegados
+    Entonces debe visualizar de forma clara la dirección "Camino Bosque 1450, Pucón, Chile"
+    Y debe visualizar el teléfono "+56 9 5555 0119" y el correo "contacto@terrasol-demo.cl"
+
+  Criterio de Aceptación 4.2:
+  El enlace de llamada telefónica (tel:) debe marcar exactamente al mismo número expuesto en el texto visible.
+
+  Escenario: CP-TS-08 - Coherencia entre texto visible y protocolo telefónico tel:
+    Dado que el usuario se encuentra en la tarjeta de contacto en "contacto.html"
+    Cuando inspecciona el enlace de marcación rápida del teléfono
+    Entonces el atributo href "tel:" debe coincidir exactamente con el número visual "+56 9 5555 0119"
+    Y no debe contener discrepancias que marquen al número erróneo "+56955550118"
+
+# ------------------------------------------------------------------------------
+# HU05: FORMULARIO DE SOLICITUD
+# ------------------------------------------------------------------------------
+Característica: HU05 - Formulario de Solicitud de Visita en TerraSol
+  Como usuario interesado en visitar una parcela
+  Quiero completar y enviar un formulario web con mis datos y requerimientos
+  Para que un ejecutivo coordine mi visita técnica
+
+  Criterio de Aceptación 5.1:
+  El formulario debe permitir el envío exitoso al completar todos los datos obligatorios válidos.
+
+  Escenario: CP-TS-09 - Envío exitoso de solicitud de visita con datos válidos
+    Dado que el usuario se encuentra en la página "https://clinicatecnologica.cl/terrasol/contacto.html"
+    Cuando ingresa el nombre "Gina Norambuena"
+    Y el teléfono "+56912345678"
+    Y el correo electrónico "gina.norambuena@example.cl"
+    Y selecciona la parcela "Coihue"
+    Y redacta el mensaje "Deseo agendar visita para el sábado por la mañana"
+    Y marca la casilla de consentimiento de privacidad
+    Y presiona el botón "Enviar solicitud"
+    Entonces el sistema debe procesar la solicitud y redirigir a la página "gracias.html"
+    Y debe mostrar el mensaje "Gracias por escribirnos"
+
+  Criterio de Aceptación 5.2:
+  El formulario debe validar formatos requeridos e impedir el envío si el correo no cumple formato estándar.
+
+  Escenario: CP-TS-10 - Validación de formato de correo electrónico antes del envío
+    Dado que el usuario se encuentra en el formulario de contacto en "contacto.html"
+    Cuando ingresa un nombre válido "Carlos Pérez"
+    Y escribe un correo con formato inválido "carlos-correo-sin-arroba"
+    Y presiona el botón "Enviar solicitud"
+    Entonces el formulario no debe ser despachado
+    Y el navegador o sistema debe marcar el campo de correo con un mensaje de validación de formato
+
+# ------------------------------------------------------------------------------
+# HU06: NAVEGACIÓN SEGURA
+# ------------------------------------------------------------------------------
+Característica: HU06 - Navegación Segura y Protección de Datos Personales en TerraSol
+  Como usuario que entrega información personal y de contacto
+  Quiero que la transmisión de mis datos se realice mediante canales cifrados y métodos seguros
+  Para garantizar la confidencialidad de mi información frente a terceros no autorizados
+
+  Criterio de Aceptación 6.1:
+  La navegación y recursos del sitio deben servirse exclusivamente bajo protocolo cifrado HTTPS.
+
+  Escenario: CP-TS-11 - Verificación de certificado TLS/HTTPS en toda la navegación
+    Dado que el usuario ingresa al dominio "https://clinicatecnologica.cl/terrasol/"
+    Cuando verifica la conexión en la barra de direcciones del navegador
+    Entonces la conexión debe indicar un candado de seguridad activo con protocolo HTTPS
+    Y el certificado digital debe ser válido y emitido por una entidad certificadora reconocida
+
+  Criterio de Aceptación 6.2:
+  Los datos personales del formulario deben transmitirse mediante método seguro HTTP POST y no por GET.
+
+  Escenario: CP-TS-12 - Transmisión confidencial de datos personales (Evitar CWE-598)
+    Dado que el usuario completa el formulario de contacto con sus datos personales (nombre, teléfono, correo)
+    Cuando presiona el botón "Enviar solicitud"
+    Entonces la petición HTTP hacia el servidor debe realizarse mediante el método "POST"
+    Y los datos personales sensibles no deben ser expuestos como parámetros de consulta en la URL (Query String)
+
+# ------------------------------------------------------------------------------
+# HU07: PREGUNTAS FRECUENTES (FAQ)
+# ------------------------------------------------------------------------------
+Característica: HU07 - Sección de Preguntas Frecuentes en TerraSol
+  Como usuario nuevo en el portal
+  Quiero consultar un acordeón interactivo de dudas comunes
+  Para resolver inquietudes sobre las parcelas de forma autónoma e inmediata
+
+  Criterio de Aceptación 7.1:
+  Al hacer clic sobre una pregunta cerrada, debe desplegarse su respuesta y cambiar el atributo aria-expanded a true.
+
+  Escenario: CP-TS-13 - Despliegue interactivo de la respuesta sobre superficie de parcelas
+    Dado que el usuario se encuentra en la página "https://clinicatecnologica.cl/terrasol/faq.html"
+    Cuando hace clic en el botón "¿Cuál es la superficie de las parcelas?"
+    Entonces el contenedor de respuesta "f1" debe adquirir la clase "open"
+    Y el botón debe actualizar su atributo "aria-expanded" al valor "true"
+
+  Criterio de Aceptación 7.2:
+  Todos los botones de preguntas frecuentes deben estar debidamente vinculados con su respectivo panel de respuesta.
+
+  Escenario: CP-TS-14 - Despliegue de la respuesta sobre opciones de financiamiento
+    Dado que el usuario se encuentra en la sección de preguntas frecuentes en "faq.html"
+    Cuando hace clic en el botón "¿Existe financiamiento?"
+    Entonces el panel de respuesta correspondiente debe abrirse y mostrar la información al usuario
+    Y el atributo "aria-controls" del botón debe apuntar al ID exacto del panel de respuesta sin discrepancias
+
+
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+# PARTE 2: SITIO WEB ENERGY AND WATER ECOPARCELAS (14 CASOS DE PRUEBA)
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+# ------------------------------------------------------------------------------
+# HU01: NAVEGACIÓN INTUITIVA
+# ------------------------------------------------------------------------------
+Característica: HU01 - Navegación Intuitiva en Energy & Water EcoParcelas
+  Como usuario interesado en soluciones de parcelas sustentables
+  Quiero disponer de una barra de navegación funcional con enlaces ancla correctos
+  Para desplazarme rápidamente a las secciones de mi interés
+
+  Criterio de Aceptación 1.1:
+  Los enlaces del menú superior deben provocar el desplazamiento suave hacia la sección ancla correspondiente.
+
+  Escenario: CP-EW-01 - Desplazamiento exitoso a la sección de parcelas desde la barra de navegación
+    Dado que el usuario se encuentra en la página de inicio "https://clinicatecnologica.cl/energyandwater/"
+    Cuando hace clic en el enlace "Parcelas" del menú superior
+    Entonces la vista debe desplazarse automáticamente hasta el contenedor con ID "#parcelas"
+    Y debe mostrar el catálogo con las tres opciones de lotes demostrativos
+
+  Criterio de Aceptación 1.2:
+  Los hipervínculos del menú hacia secciones internas deben coincidir de forma idéntica con los identificadores (ID) del DOM.
+
+  Escenario: CP-EW-02 - Navegación hacia la sección FAQ desde el menú de navegación
+    Dado que el usuario se encuentra en cualquier sección de la página principal
+    Cuando hace clic en el enlace "FAQ" del menú de navegación superior
+    Entonces el navegador debe desplazarse directamente hacia la sección de preguntas frecuentes con ID "#faq"
+    Y el enlace del menú no debe apuntar a un identificador inexistente como "#preguntas"
+
+# ------------------------------------------------------------------------------
+# HU02: COMPATIBILIDAD MÓVIL
+# ------------------------------------------------------------------------------
+Característica: HU02 - Compatibilidad Móvil y Diseño Responsivo en Energy & Water
+  Como usuario que utiliza dispositivos móviles
+  Quiero que los bloques de contenido y formularios se reorganicen fluidamente
+  Para interactuar con la plataforma sin zoom manual ni distorsión de elementos
+
+  Criterio de Aceptación 2.1:
+  La cuadrícula de proyectos debe acomodarse a una columna legible en anchos de pantalla reducidos.
+
+  Escenario: CP-EW-03 - Reorganización responsiva de la grilla de lotes en smartphone
+    Dado que el usuario navega en un viewport móvil de 375x667 píxeles
+    Cuando se posiciona en la sección "#parcelas"
+    Entonces los elementos con clase ".project" deben mostrarse ordenados verticalmente (1 columna)
+    Y el ancho de las tarjetas no debe desbordar los límites laterales de la pantalla
+
+  Criterio de Aceptación 2.2:
+  Los campos combinados del formulario de contacto deben apilarse y ser fácilmente clicables en pantallas móviles.
+
+  Escenario: CP-EW-04 - Adaptabilidad y usabilidad de los campos del formulario en pantalla móvil
+    Dado que el usuario visualiza el formulario de visita en un dispositivo móvil
+    Cuando enfoca los campos agrupados bajo la clase ".two" (Nombre y Teléfono)
+    Entonces cada campo de entrada debe ocupar el ancho completo disponible para facilitar la digitación
+    Y ningún input debe solaparse ni quedar fuera del área visible
+
+# ------------------------------------------------------------------------------
+# HU03: GALERÍA DE IMÁGENES Y VIDEOS
+# ------------------------------------------------------------------------------
+Característica: HU03 - Galería Multimedia e Inspección Remota en Energy & Water
+  Como comprador potencial de un lote sustentable
+  Quiero revisar contenido gráfico y audiovisual fidedigno
+  Para evaluar la infraestructura energética e hídrica antes de agendar una visita presencial
+
+  Criterio de Aceptación 3.1:
+  Las imágenes de inspección deben ser descriptivas y contar con atributos de accesibilidad completos (alt text).
+
+  Escenario: CP-EW-05 - Inspección de imágenes y cumplimiento de accesibilidad en la galería
+    Dado que el usuario accede a la sección "Imágenes y video" (#galeria)
+    Cuando visualiza las imágenes correspondientes a los lotes demostrativos
+    Entonces cada elemento <img> debe poseer un atributo "alt" no vacío que describa el contenido de la imagen
+    Y ninguna imagen debe presentar el atributo alt="" vacío o carecer de descripción
+
+  Criterio de Aceptación 3.2:
+  El módulo de video de recorrido técnico debe abrir y reproducir el contenido audiovisual correspondiente.
+
+  Escenario: CP-EW-06 - Reproducción interactiva del video de recorrido técnico
+    Dado que el usuario se ubica en el recuadro "Video: recorrido técnico" de la galería
+    Cuando hace clic en el enlace "▶ Reproducir"
+    Entonces el sistema debe abrir un reproductor de video o ventana modal para reproducir el clip de 01:20 min
+    Y el enlace no debe tener un href="#" genérico que recargue la página o desplace la vista al inicio
+
+# ------------------------------------------------------------------------------
+# HU04: INFORMACIÓN DE CONTACTO
+# ------------------------------------------------------------------------------
+Característica: HU04 - Disponibilidad y Consistencia de Contacto en Energy & Water
+  Como usuario interesado en agendar una visita técnica
+  Quiero acceder a los datos institucionales de contacto y enlaces de navegación consistentes
+  Para comunicarme directamente por teléfono, correo o presencialmente
+
+  Criterio de Aceptación 4.1:
+  La tarjeta de contacto en la página principal debe desplegar dirección, teléfono, correo y horarios de atención.
+
+  Escenario: CP-EW-07 - Consulta de información de contacto en la sección principal
+    Dado que el usuario se ubica en la sección de contacto (#contacto)
+    Cuando consulta la tarjeta "Energy + Water Demo"
+    Entonces debe visualizar la dirección "Av. Tecnología 520, Las Condes, Santiago"
+    Y debe disponer de un enlace telefónico operativo a "+56 2 2555 0180" y correo "contacto@ew-demo.cl"
+
+  Criterio de Aceptación 4.2:
+  Los botones de contacto en las páginas de detalle deben dirigir de manera exacta a la sección de contacto en la página de inicio.
+
+  Escenario: CP-EW-08 - Navegación a contacto desde la página de detalle del lote
+    Dado que el usuario se encuentra revisando la ficha técnica en "detalle.html?lote=EW-01"
+    Cuando hace clic en el botón "Solicitar visita"
+    Entonces el sistema debe redirigir a "index.html#contacto" posicionando la pantalla sobre el formulario
+    Y el menú de la página de detalle no debe apuntar a rutas inválidas como "index.html#contact"
+
+# ------------------------------------------------------------------------------
+# HU05: FORMULARIO DE SOLICITUD
+# ------------------------------------------------------------------------------
+Característica: HU05 - Formulario de Solicitud de Visita Técnica en Energy & Water
+  Como potencial cliente
+  Quiero enviar un formulario con mis datos y selección de lote
+  Para agendar una visita técnica a la parcela demostrativa
+
+  Criterio de Aceptación 5.1:
+  El formulario debe registrar la solicitud al suministrar datos válidos y mostrar mensaje de estado exitoso.
+
+  Escenario: CP-EW-09 - Envío de solicitud de visita técnica con datos válidos
+    Dado que el usuario se ubica en el formulario "visit-form" en la sección "#contacto"
+    Cuando ingresa el nombre "Gina Norambuena"
+    Y el teléfono "+56 2 2345 6789"
+    Y el correo "gina.norambuena@example.com"
+    Y selecciona el lote "EW-02 Agua Clara"
+    Y redacta el mensaje "Solicitud para coordinar visita este fin de semana"
+    Y mantiene marcada la casilla de tratamiento de datos
+    Y presiona el botón "Enviar solicitud"
+    Entonces el elemento "#form-result" debe desplegar el mensaje "Solicitud registrada correctamente."
+    Y los campos del formulario deben restablecerse
+
+  Criterio de Aceptación 5.2:
+  El sistema debe validar los campos obligatorios e impedir el envío si se envían datos vacíos o con formato inválido.
+
+  Escenario: CP-EW-10 - Validación de campos obligatorios en el formulario de solicitud
+    Dado que el usuario se ubica frente al formulario "#visit-form"
+    Cuando deja todos los campos de texto en blanco (nombre, teléfono, correo)
+    Y presiona el botón "Enviar solicitud"
+    Entonces el formulario debe ser bloqueado por validación de campos obligatorios
+    Y el sistema no debe mostrar "Solicitud registrada correctamente." ni procesar registros vacíos
+
+# ------------------------------------------------------------------------------
+# HU06: NAVEGACIÓN SEGURA
+# ------------------------------------------------------------------------------
+Característica: HU06 - Navegación Segura y Protección de Datos en Energy & Water
+  Como usuario que suministra información personal
+  Quiero garantías de seguridad en la navegación y almacenamiento de datos
+  Para prevenir el acceso no autorizado o la exposición indebida de mi privacidad
+
+  Criterio de Aceptación 6.1:
+  Todos los enlaces externos presentes en el sitio deben dirigir a destinos seguros bajo protocolo HTTPS.
+
+  Escenario: CP-EW-11 - Verificación de protocolos seguros en enlaces externos del footer
+    Dado que el usuario se desplaza al pie de página (footer) de Energy & Water
+    Cuando inspecciona los enlaces en la columna "Enlaces"
+    Entonces el enlace hacia el portal proveedor debe utilizar el protocolo seguro "https://"
+    Y no debe contener hipervínculos inseguros hacia "http://example.com"
+
+  Criterio de Aceptación 6.2:
+  Los datos personales de contacto no deben guardarse en texto plano sin cifrar en el almacenamiento local del cliente.
+
+  Escenario: CP-EW-12 - Protección de datos personales contra fuga en LocalStorage (CWE-312)
+    Dado que el usuario ingresa su nombre, correo y teléfono en el formulario de contacto
+    Cuando presiona el botón "Enviar solicitud"
+    Entonces la aplicación no debe almacenar información de identificación personal (PII) en texto claro dentro de localStorage
+    Y los datos deben enviarse a un servicio backend seguro mediante un canal cifrado y autenticado
+
+# ------------------------------------------------------------------------------
+# HU07: PREGUNTAS FRECUENTES (FAQ)
+# ------------------------------------------------------------------------------
+Característica: HU07 - Centro de Ayuda y Preguntas Frecuentes en Energy & Water
+  Como usuario nuevo en la plataforma
+  Quiero disponer de un buscador ágil y preguntas frecuentes interactivas
+  Para resolver mis inquietudes sobre los lotes de forma autónoma
+
+  Criterio de Aceptación 7.1:
+  El buscador de preguntas frecuentes debe filtrar el contenido dinámicamente y el botón "Limpiar" debe restaurar todas las preguntas.
+
+  Escenario: CP-EW-13 - Filtrado de preguntas y restauración de contenido mediante botón Limpiar
+    Dado que el usuario se ubica en la sección "#faq" con las 4 preguntas visibles
+    Cuando escribe una palabra clave en el campo de búsqueda "#faq-search"
+    Y posteriormente presiona el botón "Limpiar"
+    Entonces el campo de búsqueda debe quedar vacío
+    Y las 4 preguntas frecuentes deben volver a desplegarse en pantalla sin permanecer ocultas
+
+  Criterio de Aceptación 7.2:
+  Cada botón de pregunta frecuente debe abrir el panel que contiene la respuesta asociada a dicha consulta.
+
+  Escenario: CP-EW-14 - Despliegue interactivo de la respuesta sobre cómo agendar una visita
+    Dado que el usuario se encuentra en la sección de preguntas frecuentes
+    Cuando hace clic en el botón "¿Cómo agendo una visita?"
+    Entonces el panel que contiene la respuesta correspondiente debe expandirse con la clase "show"
+    Y el atributo "data-target" del botón debe coincidir exactamente con el ID del contenedor de la respuesta
+

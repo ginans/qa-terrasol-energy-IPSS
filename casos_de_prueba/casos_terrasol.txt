@@ -1,0 +1,219 @@
+# ==============================================================================
+# INSTITUTO PROFESIONAL SAN SEBASTIÁN - CARRERA DE INFORMÁTICA
+# ASIGNATURA: TESTING APLICADO AL DESARROLLO DE SISTEMAS
+# EXAMEN FINAL - CASOS DE PRUEBA EN FORMATO GHERKIN (BDD)
+# SITIO WEB 1: TERRASOL PARCELAS (https://clinicatecnologica.cl/terrasol/)
+# ==============================================================================
+
+# ------------------------------------------------------------------------------
+# HISTORIA DE USUARIO 1: NAVEGACIÓN INTUITIVA
+# Como usuario, quiero un menú de navegación claro y accesible desde cualquier página,
+# para encontrar rápidamente la información que necesito sobre las parcelas.
+# ------------------------------------------------------------------------------
+
+Característica: HU01 - Navegación Intuitiva en TerraSol Parcelas
+  Como usuario potencial de parcelas
+  Quiero disponer de un menú de navegación funcional y accesible en todas las páginas
+  Para explorar los detalles y disponibilidad de los terrenos sin obstáculos
+
+  Criterio de Aceptación 1.1:
+  El menú de navegación debe permitir el acceso directo a la sección de parcelas desde la página de inicio.
+
+  Escenario: CP-TS-01 - Navegación exitosa a la sección de parcelas desde el menú principal
+    Dado que el usuario se encuentra en la página de inicio "https://clinicatecnologica.cl/terrasol/index.html"
+    Cuando hace clic en el enlace "Parcelas" del menú de navegación superior
+    Entonces el navegador debe redirigir a la URL "https://clinicatecnologica.cl/terrasol/parcelas.html"
+    Y la página debe mostrar el título "Parcelas" y el catálogo de lotes disponibles
+
+  Criterio de Aceptación 1.2:
+  Todos los enlaces del menú de navegación en páginas secundarias deben apuntar a rutas válidas y existentes.
+
+  Escenario: CP-TS-02 - Verificación de enlace de navegación a parcelas desde la página FAQ
+    Dado que el usuario se encuentra en la página de preguntas frecuentes "https://clinicatecnologica.cl/terrasol/faq.html"
+    Cuando hace clic en el enlace "Parcelas" situado en la barra de navegación superior
+    Entonces el sistema debe dirigir al usuario a la página existente "parcelas.html" con código HTTP 200
+    Y no debe mostrar un mensaje de error HTTP 404 "Not Found"
+
+# ------------------------------------------------------------------------------
+# HISTORIA DE USUARIO 2: COMPATIBILIDAD MÓVIL
+# Como usuario que navega desde mi smartphone o tablet, quiero que la web sea
+# completamente funcional y adaptable a dispositivos móviles, para poder buscar y
+# revisar parcelas en cualquier momento y lugar.
+# ------------------------------------------------------------------------------
+
+Característica: HU02 - Compatibilidad Móvil y Diseño Responsivo en TerraSol
+  Como usuario que navega desde dispositivos móviles
+  Quiero que la interfaz se adapte correctamente al ancho de pantalla del dispositivo
+  Para interactuar con la información sin pérdida de contenido ni desbordamientos horizontales
+
+  Criterio de Aceptación 2.1:
+  La vista en smartphones debe reorganizar los elementos verticalmente sin generar scroll horizontal indeseado.
+
+  Escenario: CP-TS-03 - Visualización responsiva de la página de inicio en resolución móvil
+    Dado que el usuario accede al sitio desde un dispositivo móvil con viewport de 375x667 píxeles
+    Cuando carga la página de inicio "https://clinicatecnologica.cl/terrasol/"
+    Entonces el contenedor principal no debe superar el 100% del ancho del viewport
+    Y la tipografía, botones y tarjetas de parcelas deben visualizarse apiladas y legibles sin scroll horizontal
+
+  Criterio de Aceptación 2.2:
+  Los botones de llamada a la acción deben tener un área táctil accesible y responder adecuadamente en pantallas táctiles.
+
+  Escenario: CP-TS-04 - Usabilidad y respuesta táctil de botones de acción en entorno móvil
+    Dado que el usuario visualiza la sección principal (hero) en un viewport móvil de 375x667
+    Cuando presiona el botón táctil "Ver parcelas"
+    Entonces el sistema debe registrar la pulsación sin solapamientos con otros elementos
+    Y debe desplazarse o cargar la vista de parcelas de forma fluida
+
+# ------------------------------------------------------------------------------
+# HISTORIA DE USUARIO 3: GALERÍA DE IMÁGENES Y VIDEOS
+# Como comprador potencial, quiero ver imágenes de alta calidad y videos de las parcelas,
+# para evaluar mejor el entorno y las características del terreno antes de visitarlo.
+# ------------------------------------------------------------------------------
+
+Característica: HU03 - Galería Multimedia de Parcelas en TerraSol
+  Como comprador potencial
+  Quiero visualizar recursos multimedia de alta calidad (fotografías y video)
+  Para inspeccionar las condiciones del terreno antes de coordinar una visita en terreno
+
+  Criterio de Aceptación 3.1:
+  Todas las imágenes publicadas en la galería deben cargarse correctamente desde el servidor.
+
+  Escenario: CP-TS-05 - Carga e integridad de las imágenes de la galería del entorno
+    Dado que el usuario navega hasta la sección "Galería del entorno" en la página principal
+    Cuando se renderiza la grilla de imágenes con clase "gallery-grid"
+    Entonces cada una de las 4 imágenes debe devolver un estado HTTP 200 OK
+    Y ninguna imagen debe presentar iconos de recurso roto o error HTTP 404
+
+  Criterio de Aceptación 3.2:
+  El componente de video debe permitir la reproducción interactiva del recorrido demostrativo.
+
+  Escenario: CP-TS-06 - Reproducción interactiva del video demostrativo de 60 segundos
+    Dado que el usuario se ubica en la sección de video "Recorrido de 60 segundos"
+    Cuando hace clic sobre el botón "▶ Reproducir video"
+    Entonces el sistema debe iniciar la reproducción de un reproductor de video modal o embebido
+    Y no debe permanecer en estado inactivo con eventos vacíos
+
+# ------------------------------------------------------------------------------
+# HISTORIA DE USUARIO 4: INFORMACIÓN DE CONTACTO
+# Como usuario interesado en una parcela, quiero encontrar fácilmente la información
+# de contacto de la empresa, para poder comunicarme rápidamente y agendar una visita o pedir más detalles.
+# ------------------------------------------------------------------------------
+
+Característica: HU04 - Información y Canales de Contacto en TerraSol
+  Como usuario interesado en un lote
+  Quiero consultar canales de contacto directos, fidedignos y operativos
+  Para comunicarme inmediatamente con el equipo de ventas
+
+  Criterio de Aceptación 4.1:
+  La información de contacto en la página de inicio y footer debe presentar dirección, teléfono y correo electrónico.
+
+  Escenario: CP-TS-07 - Disponibilidad y consistencia visual de los datos de contacto
+    Dado que el usuario se desplaza a la tarjeta "Equipo TerraSol Demo" o al pie de página
+    Cuando revisa los datos de contacto desplegados
+    Entonces debe visualizar de forma clara la dirección "Camino Bosque 1450, Pucón, Chile"
+    Y debe visualizar el teléfono "+56 9 5555 0119" y el correo "contacto@terrasol-demo.cl"
+
+  Criterio de Aceptación 4.2:
+  El enlace de llamada telefónica (tel:) debe marcar exactamente al mismo número expuesto en el texto visible.
+
+  Escenario: CP-TS-08 - Coherencia entre texto visible y protocolo telefónico tel:
+    Dado que el usuario se encuentra en la tarjeta de contacto en "contacto.html"
+    Cuando inspecciona el enlace de marcación rápida del teléfono
+    Entonces el atributo href "tel:" debe coincidir exactamente con el número visual "+56 9 5555 0119"
+    Y no debe contener discrepancias que marquen al número erróneo "+56955550118"
+
+# ------------------------------------------------------------------------------
+# HISTORIA DE USUARIO 5: FORMULARIO DE SOLICITUD
+# Como usuario interesado en una parcela, quiero formularios de solicitud en la web,
+# para agendar visitas o solicitar más información fácilmente.
+# ------------------------------------------------------------------------------
+
+Característica: HU05 - Formulario de Solicitud de Visita en TerraSol
+  Como usuario interesado en visitar una parcela
+  Quiero completar y enviar un formulario web con mis datos y requerimientos
+  Para que un ejecutivo coordine mi visita técnica
+
+  Criterio de Aceptación 5.1:
+  El formulario debe permitir el envío exitoso al completar todos los datos obligatorios válidos.
+
+  Escenario: CP-TS-09 - Envío exitoso de solicitud de visita con datos válidos
+    Dado que el usuario se encuentra en la página "https://clinicatecnologica.cl/terrasol/contacto.html"
+    Cuando ingresa el nombre "Gina Norambuena"
+    Y el teléfono "+56912345678"
+    Y el correo electrónico "gina.norambuena@example.cl"
+    Y selecciona la parcela "Coihue"
+    Y redacta el mensaje "Deseo agendar visita para el sábado por la mañana"
+    Y marca la casilla de consentimiento de privacidad
+    Y presiona el botón "Enviar solicitud"
+    Entonces el sistema debe procesar la solicitud y redirigir a la página "gracias.html"
+    Y debe mostrar el mensaje "Gracias por escribirnos"
+
+  Criterio de Aceptación 5.2:
+  El formulario debe validar formatos requeridos e impedir el envío si el correo no cumple formato estándar.
+
+  Escenario: CP-TS-10 - Validación de formato de correo electrónico antes del envío
+    Dado que el usuario se encuentra en el formulario de contacto en "contacto.html"
+    Cuando ingresa un nombre válido "Carlos Pérez"
+    Y escribe un correo con formato inválido "carlos-correo-sin-arroba"
+    Y presiona el botón "Enviar solicitud"
+    Entonces el formulario no debe ser despachado
+    Y el navegador o sistema debe marcar el campo de correo con un mensaje de validación de formato
+
+# ------------------------------------------------------------------------------
+# HISTORIA DE USUARIO 6: NAVEGACIÓN SEGURA
+# Como usuario que proporciona información personal, quiero asegurarme de que la web tenga
+# medidas de seguridad robustas, para proteger mis datos sensibles durante la transacción.
+# ------------------------------------------------------------------------------
+
+Característica: HU06 - Navegación Segura y Protección de Datos Personales en TerraSol
+  Como usuario que entrega información personal y de contacto
+  Quiero que la transmisión de mis datos se realice mediante canales cifrados y métodos seguros
+  Para garantizar la confidencialidad de mi información frente a terceros no autorizados
+
+  Criterio de Aceptación 6.1:
+  La navegación y recursos del sitio deben servirse exclusivamente bajo protocolo cifrado HTTPS.
+
+  Escenario: CP-TS-11 - Verificación de certificado TLS/HTTPS en toda la navegación
+    Dado que el usuario ingresa al dominio "https://clinicatecnologica.cl/terrasol/"
+    Cuando verifica la conexión en la barra de direcciones del navegador
+    Entonces la conexión debe indicar un candado de seguridad activo con protocolo HTTPS
+    Y el certificado digital debe ser válido y emitido por una entidad certificadora reconocida
+
+  Criterio de Aceptación 6.2:
+  Los datos personales del formulario deben transmitirse mediante método seguro HTTP POST y no por GET.
+
+  Escenario: CP-TS-12 - Transmisión confidencial de datos personales (Evitar CWE-598)
+    Dado que el usuario completa el formulario de contacto con sus datos personales (nombre, teléfono, correo)
+    Cuando presiona el botón "Enviar solicitud"
+    Entonces la petición HTTP hacia el servidor debe realizarse mediante el método "POST"
+    Y los datos personales sensibles no deben ser expuestos como parámetros de consulta en la URL (Query String)
+
+# ------------------------------------------------------------------------------
+# HISTORIA DE USUARIO 7: PREGUNTAS FRECUENTES (FAQ)
+# Como usuario nuevo en el sitio, quiero acceder a una sección de preguntas frecuentes (FAQ),
+# para encontrar rápidamente respuestas a las preguntas más comunes y entender mejor los servicios ofrecidos sin necesidad de contactar al soporte.
+# ------------------------------------------------------------------------------
+
+Característica: HU07 - Sección de Preguntas Frecuentes en TerraSol
+  Como usuario nuevo en el portal
+  Quiero consultar un acordeón interactivo de dudas comunes
+  Para resolver inquietudes sobre las parcelas de forma autónoma e inmediata
+
+  Criterio de Aceptación 7.1:
+  Al hacer clic sobre una pregunta cerrada, debe desplegarse su respuesta y cambiar el atributo aria-expanded a true.
+
+  Escenario: CP-TS-13 - Despliegue interactivo de la respuesta sobre superficie de parcelas
+    Dado que el usuario se encuentra en la página "https://clinicatecnologica.cl/terrasol/faq.html"
+    Cuando hace clic en el botón "¿Cuál es la superficie de las parcelas?"
+    Entonces el contenedor de respuesta "f1" debe adquirir la clase "open"
+    Y el botón debe actualizar su atributo "aria-expanded" al valor "true"
+
+  Criterio de Aceptación 7.2:
+  Todos los botones de preguntas frecuentes deben estar debidamente vinculados con su respectivo panel de respuesta.
+
+  Escenario: CP-TS-14 - Despliegue de la respuesta sobre opciones de financiamiento
+    Dado que el usuario se encuentra en la sección de preguntas frecuentes en "faq.html"
+    Cuando hace clic en el botón "¿Existe financiamiento?"
+    Entonces el panel de respuesta correspondiente debe abrirse y mostrar la información al usuario
+    Y el atributo "aria-controls" del botón debe apuntar al ID exacto del panel de respuesta sin discrepancias
+
