@@ -1,0 +1,23 @@
+{
+  "name": "qa-terrasol-energy-ipss",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ginans/qa-terrasol-energy-IPSS.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ginans/qa-terrasol-energy-IPSS/issues"
+  },
+  "homepage": "https://github.com/ginans/qa-terrasol-energy-IPSS#readme",
+  "devDependencies": {
+    "playwright": "^1.63.0"
+  }
+}
